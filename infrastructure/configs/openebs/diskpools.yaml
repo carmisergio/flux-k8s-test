@@ -1,0 +1,22 @@
+# One Mayastor pool per node with a Mayastor partition: nodes with
+# mayastorPartitionSize in nix-k8s-test's inventory.nix. Keep this in sync with
+# it: a pool on a node without the partition never comes online.
+#
+# The partition has the same label on every node (modules/disk.nix).
+apiVersion: openebs.io/v1beta3
+kind: DiskPool
+metadata:
+  name: pool-k8s-cp1
+  namespace: openebs-system
+spec:
+  node: k8s-cp1
+  disks: ["aio:///dev/disk/by-partlabel/disk-main-mayastor"]
+---
+apiVersion: openebs.io/v1beta3
+kind: DiskPool
+metadata:
+  name: pool-k8s-cp3
+  namespace: openebs-system
+spec:
+  node: k8s-cp3
+  disks: ["aio:///dev/disk/by-partlabel/disk-main-mayastor"]

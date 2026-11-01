@@ -1,0 +1,11 @@
+# Secrets are files named *.sops.yaml. sops encrypts only data/stringData, so
+# the rest of the manifest stays readable in Git.
+#
+# Recipients: Flux (its key is the Secret flux-system/sops-age, created by
+# nix-k8s-test's modules/flux.nix) and the admin key, so you can edit them.
+creation_rules:
+  - path_regex: .*\.sops\.ya?ml$
+    encrypted_regex: ^(data|stringData)$
+    age: >-
+      age18ncaqyg6x5eutvn55nc5vgx2pzrzssh43wg5d0rey3f3ede3k3dsf2du59,
+      age14qc54c5gy5j3yf86mvtpupm7yl2ljxy6pgfpy70x5x3m4x4thczs97qm0u
