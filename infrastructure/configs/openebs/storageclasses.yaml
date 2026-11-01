@@ -1,5 +1,4 @@
-# Replicated volumes: one copy on each of the two Mayastor pools (cp1, cp3).
-# Survives the loss of one of them.
+# Replicated volumes (2 copies)
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -10,9 +9,7 @@ parameters:
   protocol: nvmf
   repl: "2"
 ---
-# Node-local volumes: a ZFS dataset per volume under zroot/openebs-localpv. The
-# pod is bound to the node its volume is on. thinprovision "no": each volume
-# reserves its size, so volumes can't take the space of the system or k3s.
+# Node-local volumes: a ZFS dataset per volume under zroot/openebs-localpv
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -23,4 +20,4 @@ volumeBindingMode: WaitForFirstConsumer
 parameters:
   poolname: zroot/openebs-localpv
   fstype: zfs
-  thinprovision: "no"
+  thinprovision: "yes"

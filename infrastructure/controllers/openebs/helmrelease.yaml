@@ -1,9 +1,3 @@
-# OpenEBS: Mayastor (replicated volumes on the nodes' Mayastor partitions) and
-# ZFS LocalPV (node-local volumes in zroot/openebs-localpv).
-#
-# The node side is in nix-k8s-test: the Mayastor partitions, huge pages,
-# nvme_tcp and the openebs.io/engine=mayastor label (modules/mayastor.nix), and
-# the datasets zroot/mayastor-etcd and zroot/openebs-localpv (modules/disk.nix).
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -35,21 +29,16 @@ spec:
           enabled: false
         zfs:
           enabled: true
-        # hostpath stays: Mayastor's etcd uses it.
+        # hostpath stays: used for mayastor's etcd
       replicated:
         mayastor:
           enabled: true
-    # Hostpath volumes would be on the nodes' root dataset, without a size
-    # limit. Node-local volumes use ZFS LocalPV instead. The hostpath
-    # provisioner itself stays, for Mayastor's etcd.
     localpv-provisioner:
       hostpathClass:
         enabled: false
     zfs-localpv:
       zfs:
-        # The driver runs the host's zfs with chroot; NixOS has no /sbin/zfs.
-        # The booted system's zfs matches the loaded kernel module, also after
-        # a deploy that updates ZFS but before the reboot.
+        # nix zfs tools location
         bin: /run/booted-system/sw/bin/zfs
     loki:
       enabled: false
