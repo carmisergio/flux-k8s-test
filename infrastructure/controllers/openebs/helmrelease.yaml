@@ -47,7 +47,7 @@ spec:
         # Sleep until there is I/O instead of busy-polling the core at 100%.
         # NVMe queues are polled on a timer (100us), at a small latency cost.
         interruptMode:
-          enabled: true
+          enabled: false
       obs:
         # No usage reports to OpenEBS.
         callhome:

@@ -24,11 +24,7 @@ metadata:
   name: infra-configs
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: infra-controllers
   interval: 10m
-  # Mayastor's diskpool operator registers the DiskPool CRD shortly after it
-  # starts
   retryInterval: 1m
   path: ./infrastructure/configs
   prune: true

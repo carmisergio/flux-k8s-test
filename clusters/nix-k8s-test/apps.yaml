@@ -5,8 +5,6 @@ metadata:
   name: apps
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: infra-configs
   interval: 10m
   retryInterval: 1m
   path: ./apps
