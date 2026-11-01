@@ -9,6 +9,10 @@ metadata:
 spec:
   interval: 1h
   timeout: 15m
+  # The io-engine DaemonSet uses the OnDelete update strategy, which the
+  # default kstatus poller waits on forever. Helm v3's waiter skips it.
+  waitStrategy:
+    name: legacy
   chart:
     spec:
       chart: openebs
