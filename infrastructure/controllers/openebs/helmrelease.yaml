@@ -48,10 +48,8 @@ spec:
       io_engine:
         # One core per io-engine instead of two (CPU request and limit follow).
         cpuCount: "1"
-        # Sleep until there is I/O instead of busy-polling the core at 100%.
-        # NVMe queues are polled on a timer (100us), at a small latency cost.
         interruptMode:
-          enabled: false
+          enabled: true
       obs:
         # No usage reports to OpenEBS.
         callhome:
