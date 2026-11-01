@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shell
+spec:
+  replicas: 1
+  # The volume can be attached to one node at a time: stop the old pod before
+  # the new one starts.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: shell
+  template:
+    metadata:
+      labels:
+        app: shell
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-cp2
+      containers:
+        - name: shell
+          image: alpine:3
+          command: ["sleep", "infinity"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data

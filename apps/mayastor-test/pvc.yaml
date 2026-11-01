@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data
+spec:
+  storageClassName: mayastor-2
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 2Gi
