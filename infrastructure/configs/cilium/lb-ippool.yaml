@@ -1,0 +1,24 @@
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: default
+spec:
+  blocks:
+    - start: 192.168.201.100
+      stop: 192.168.201.200
+  serviceSelector:
+    matchExpressions:
+      - key: lb.home/static
+        operator: DoesNotExist
+---
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: static
+spec:
+  blocks:
+    - start: 192.168.201.2
+      stop: 192.168.201.99
+  serviceSelector:
+    matchLabels:
+      lb.home/static: "true"
