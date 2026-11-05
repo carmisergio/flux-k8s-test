@@ -1,7 +1,7 @@
 # callcap-controller configuration.
 
 recorder_image = "ghcr.io/swarm-laboratories/callcap-recorder:v0.1.0"
-# image_pull_secrets = ["ghcr"]   # if the GHCR packages are private
+image_pull_secrets = ["ghcr-login"]   # secret-ghcr-login.sops.yaml
 
 [upload]
 backend = "drive"

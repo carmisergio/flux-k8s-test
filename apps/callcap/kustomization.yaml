@@ -17,6 +17,7 @@ resources:
   - recorder-egress.yaml
   - callcap-api.sops.yaml
   - callcap-upload.sops.yaml
+  - secret-ghcr-login.sops.yaml
 configMapGenerator:
   - name: callcap-controller
     files:
@@ -26,6 +27,19 @@ images:
     newName: ghcr.io/swarm-laboratories/callcap-controller
     newTag: v0.1.0
 patches:
+  # The GHCR packages are private. (Recorder pods get the same secret
+  # through image_pull_secrets in controller.toml.)
+  - patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: callcap-controller
+        namespace: callcap
+      spec:
+        template:
+          spec:
+            imagePullSecrets:
+              - name: ghcr-login
   # Replicated, so the controller isn't tied to one node's disk.
   - target: { kind: PersistentVolumeClaim, name: callcap-profiles }
     patch: |

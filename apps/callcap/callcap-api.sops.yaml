@@ -1,0 +1,33 @@
+# The token the callcap CLI uses for the controller's API.
+apiVersion: v1
+kind: Secret
+metadata:
+    name: callcap-api
+    namespace: callcap
+type: Opaque
+stringData:
+    token: ENC[AES256_GCM,data:yPJpkGiCGIaUPEZMHgUX+9Hw2cwxa5Y3UHzq1lHMBUXn2QpabRhSj9sbgWzZHJrXeCpb4DvnvAmZpD7Ty05m8g==,iv:hwbl6UcJuMKbUvdOSEAXIy0D0api6lMZIu55mmVm42U=,tag:i809E2bmdNYHDVKm8z01Tw==,type:str]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBGdHdISEdqajMvS2F4d3pK
+            OENmR3VVb0U1Q1dHYnE5K2dqNmZDV3pyWTBBCk1CbnlyV2pORmYxOVA1K3Z4U3Nv
+            Nkx2TnBvVW1ObXRrQXlKRHFhNUVpYVUKLS0tIGNzUzl6NFpuTm1hN1dkaXdReldv
+            ejA5QWtobTJlWGZHUnBIakx5b0xwVlUKwDfeaM0+W5JYzO3ajJMAePV5/0icJ0Ki
+            Px9lWFevBXjzSrNfW5GFTn0oXdIepA1jkypxyUKtlhnau6wonT2nMA==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age18ncaqyg6x5eutvn55nc5vgx2pzrzssh43wg5d0rey3f3ede3k3dsf2du59
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXK0M0bHptMjdKeWNuZENz
+            SXZtNkVONU1RbDdnNFhnalN0bXB3R0FlY1drCjcyRjhidVFrK1Q1SWIvSDBGTHI4
+            d0NXTThlcnVhWlNqTkhLNXp1KzNTME0KLS0tIFh2elJyZVJxSEZiWTZ1RXVGVHBr
+            U0NTUzdEcDZWQ2dMUmExKzY2eWYrMkkKthc5NlEOTvgZEbfDk3F6kBhqIYIgiee0
+            3qEqdV+UwVYpkI8wB+cBwg9aFBaCVqLdqbBqaFBMaNmUgKhyjZkkeQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age14qc54c5gy5j3yf86mvtpupm7yl2ljxy6pgfpy70x5x3m4x4thczs97qm0u
+    encrypted_regex: ^(data|stringData)$
+    lastmodified: "2026-11-05T10:58:55Z"
+    mac: ENC[AES256_GCM,data:Q96w/v2gOYIyroqiE6OQraDGFnhayYsmY78qiiXgNQ8bS0WPd1BW+adtJSRLACiJCBQ29k8ArGjQ9Ca4GVCUWRB+DhAfxcHGfeglO1xUp0zWSBC9+FqEUunE3BASTAxCjZb0UUwcUH52TD9AroPtZEc9LQzsY7P/DhXwwrY5yf8=,iv:j+oXD56uRmUtBg07b8j6l/S6zlsJ/jKUtMCBe6y0SD4=,tag:QhDcDjUDJubPgV9Glp+6eA==,type:str]
+    version: 3.13.3

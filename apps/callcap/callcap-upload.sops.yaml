@@ -1,0 +1,34 @@
+# Google Drive credentials for the recorders (mounted at
+# /var/run/secrets/callcap-upload/credentials.json).
+apiVersion: v1
+kind: Secret
+metadata:
+    name: callcap-upload
+    namespace: callcap
+type: Opaque
+stringData:
+    credentials.json: ENC[AES256_GCM,data:mJ/OrBq7pMCTEaGWPBeX0COfKtjnB4CX/qKzptYRbokh0hIpaqb3nPMV/ufRhfhE5JnrN2euT0H9SU9Cak243DUNpBgOj0thw/0OsKhxFLmfI5lJp3UYzR7/YxssTu/B3GJM6i0ZRGKSottUErg/XsQjiJ+gjFbgx4RzmJ1JlHbH4RkgpYO8Ab5eNVq3fmm0Yc+JNuO8uogO7fB4fmnojzPUErCyAwLxjiQjgbPYu9nzV8mW2Y8hrkxfgPvzNVykE9PD2UCE,iv:9pvyx+A927B9GnERyw4eKB1go2WqUNTG1fg2kl7lbII=,tag:K9UW0BvlWXCJ3PW7tkmoNA==,type:str]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4VWJJVXlaTEx0WEI5RTBm
+            UlRMdnJkY2dkUUJDUk54b3p2K2hUMXVRblJnCnZzSU5FVTBONUF0ajJ1bTQ1Y1JM
+            dUYreUhwWEhhN0hYK2doeUZYTjJEQjAKLS0tIEhzZHU5YnZPNUNDZ3ZrSHc2SXJM
+            WXRGWUVJdDZGbWNGcHlrNEtHazNiMXcKeU93Pz+R8VBpM3KJhdzXiFvYcH9H7eH+
+            nb9RPNnMAeu202YPiIVkYbzSyP79rkloPs2+xnAZtaoQXa8uHMtcXw==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age18ncaqyg6x5eutvn55nc5vgx2pzrzssh43wg5d0rey3f3ede3k3dsf2du59
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDbEJ4ellNekJpRkpaWitD
+            RWxPRVNRVXhYaGhDNXptSlNZZHZNTUk2aVFnCjR3REJDVmM1OGIySzBFOFQxZzBy
+            azdhWDhuWlk3RGFWSGw2Vmh0RzNhd1kKLS0tIENvbDZMaHh0VlZLUnRleWFHd3Vx
+            djgrK2wwb1ZESGF3MkZjS2cwajJ4eEUK/ZuGApmRf5vK5rt65DA00uHRk7XqF5ng
+            RcXlrZlaXNlOyhylx1puogd34XUf1rapQwNTg3mF+yW51f13foqatw==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age14qc54c5gy5j3yf86mvtpupm7yl2ljxy6pgfpy70x5x3m4x4thczs97qm0u
+    encrypted_regex: ^(data|stringData)$
+    lastmodified: "2026-11-05T10:59:00Z"
+    mac: ENC[AES256_GCM,data:Exw1wlZQNWO4vz9NfMK/5Tb6cEae7ivwGMHA4Ri8CulCPXGkrdc7FowI82LvAIO2OB2wNwML2wAzd+TlhFmngJoIzl7areYFBR2MPhks4g/6/GDaW+UIFBN1Mxb+gRlBnuPSKVAOoO6rOIUwbXfCuLsSVCvezcsL8gcDp2Pv7AU=,iv:da02w7tJ6dTL81j6jTPTvidL0TWna+Ms0d5n8cOu970=,tag:BrNkYUT4zaz9h7jka7BaNw==,type:str]
+    version: 3.13.3
