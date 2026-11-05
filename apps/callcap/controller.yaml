@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: callcap-controller
+  namespace: callcap
+  labels:
+    app.kubernetes.io/name: callcap-controller
+spec:
+  replicas: 1
+  # The profile volume is ReadWriteOnce: the old pod must let go of it
+  # before the new one starts.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: callcap-controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: callcap-controller
+    spec:
+      serviceAccountName: callcap-controller
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: controller
+          image: callcap-controller:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CALLCAP_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: callcap-api
+                  key: token
+            - name: RUST_LOG
+              value: info
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 20
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits: { memory: 256Mi }
+          volumeMounts:
+            - name: config
+              mountPath: /etc/callcap
+              readOnly: true
+            - name: profiles
+              mountPath: /var/lib/callcap/profiles
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+      volumes:
+        - name: config
+          configMap:
+            name: callcap-controller
+        - name: profiles
+          persistentVolumeClaim:
+            claimName: callcap-profiles
+---
+# Saved browser profiles (a few MB each with caches stripped).
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: callcap-profiles
+  namespace: callcap
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 1Gi
+  # storageClassName: ...   # default class otherwise
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: callcap-controller
+  namespace: callcap
+spec:
+  selector:
+    app.kubernetes.io/name: callcap-controller
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

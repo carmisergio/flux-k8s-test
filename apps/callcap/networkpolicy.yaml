@@ -1,0 +1,20 @@
+# Only the controller may talk to recorder agents. The agents also check a
+# per-session token, and VNC never leaves the pod's loopback, so this is
+# defence in depth (and only enforced if your CNI implements NetworkPolicy).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: callcap-recorder-ingress
+  namespace: callcap
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: callcap-recorder
+  policyTypes: ["Ingress"]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: callcap-controller
+      ports:
+        - port: 8080

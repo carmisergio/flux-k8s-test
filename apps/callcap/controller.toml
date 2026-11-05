@@ -1,0 +1,25 @@
+# callcap-controller configuration.
+
+recorder_image = "ghcr.io/swarm-laboratories/callcap-recorder:v0.1.0"
+# image_pull_secrets = ["ghcr"]   # if the GHCR packages are private
+
+[upload]
+backend = "drive"
+secret = "callcap-upload"   # callcap-upload.sops.yaml: credentials.json
+
+[upload.drive]
+folder_id = "REPLACE_WITH_DRIVE_FOLDER_ID"
+
+# The controller is served over plain HTTP on its LoadBalancer IP: a Secure
+# cookie would never be sent back, and logins would silently fail.
+[web]
+cookie_secure = false
+
+# Web UI users. `callcap hash-password <name>` prints this block.
+# [[users]]
+# name = "sergio"
+# password_hash = "$argon2id$v=19$m=19456,t=2,p=1$...$..."
+
+# Saved browser logins, on the controller's volume. Unset = no profiles.
+[profiles]
+dir = "/var/lib/callcap/profiles"
