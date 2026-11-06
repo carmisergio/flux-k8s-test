@@ -16,9 +16,9 @@ folder_id = "1HwsgILYzHdIKwrdcrDjMHr5-ohAgzbow"
 cookie_secure = false
 
 # Web UI users. `callcap hash-password <name>` prints this block.
-# [[users]]
-# name = "sergio"
-# password_hash = "$argon2id$v=19$m=19456,t=2,p=1$...$..."
+[[users]]
+name = "leviathan"
+password_hash = "$argon2id$v=19$m=19456,t=2,p=1$zCc5TSsmoZvaER8chUs+Ow$Tai6RnS+5RduBvtsZjpdgDHh6Dgl3w6yV1Y2rO/BXOk"
 
 # Saved browser logins, on the controller's volume. Unset = no profiles.
 [profiles]
