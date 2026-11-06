@@ -1,6 +1,6 @@
 # callcap-controller configuration.
 
-recorder_image = "ghcr.io/swarm-laboratories/callcap-recorder:v0.0.1"
+recorder_image = "ghcr.io/swarm-laboratories/callcap-recorder:v0.0.2"
 image_pull_secrets = ["ghcr-login"]   # secret-ghcr-login.sops.yaml
 
 [upload]
@@ -8,7 +8,7 @@ backend = "drive"
 secret = "callcap-upload"   # callcap-upload.sops.yaml: credentials.json
 
 [upload.drive]
-folder_id = "REPLACE_WITH_DRIVE_FOLDER_ID"
+folder_id = "1HwsgILYzHdIKwrdcrDjMHr5-ohAgzbow"
 
 # The controller is served over plain HTTP on its LoadBalancer IP: a Secure
 # cookie would never be sent back, and logins would silently fail.
