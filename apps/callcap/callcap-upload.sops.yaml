@@ -7,7 +7,7 @@ metadata:
     namespace: callcap
 type: Opaque
 stringData:
-    credentials.json: ENC[AES256_GCM,data:9Rxn8ZzYiR9FDfGJ4/PWSjOce0yd0MbxNdWHDtNF+e7KT64B16XMoRgeu3VpfYRaD4zUk4FllxmCtunUpiwctZTJIewNTRGm7U7+3zj4VWzg+sN82v9/woyMGuJfhNFOPnRInCxNPjXbLnvMj39z31A8PEpQQHCOZPM0xgTlg4TMHSdlwXjhIsCBqX+UGAO8+bwCvOcvTg2BNFSm8G7z6ag6tvBBg/HRDa+QiqHUWE9OPcKIWXP7Lvg3tVwiqLwwkOckvgoBzYUVjINFLMTAiZqnkfe0JP9/yk22RKAS4oY4j1cYXouw/cIPwRss+SEVRZdSITEsTXehVTmhViFkf+T506FRdTUIsZbHRxz+guwGL6PGRsZyUtZBcz0bt/Tjc3/9grJROC+9hVfi1QjtpWe9,iv:Ssqldqv+FfcvIPUNS778/QlH5Ipqn2KAcPdji51Ntg4=,tag:/V6wropYz5hsjJ7cQ1jEDw==,type:str]
+    credentials.json: ENC[AES256_GCM,data:EObvCDFeNgFX3EoRH48oWC/gMqSBwxIOrHEQoNuDwkE3yxFv+lMENHWHfblsL/ORbV5EZI5xkLFVymkay9NJmdbiVhDWnqtJItTi5RRL2Mu9LQeuxpUw4pMgLB5lYw2zniQekc/79mOttZF/7X/iO6vAPF/T6iyd0c0bdCpszLcZkurITXKst+lsKkgrSFMNuRwqT7Wj78Sa2mQU59sbjVOjD6aTSNYFJsOnS7A+9PqDU/jjTRJMSDTYPXjRuybbE4Ynfvw0smojU8TOBtdebOd8lnXmfAI51rjITMPytA0rk5u2tuN1RxvQDadoVl+EI3maLNsBh0mbXnt01HFfeeDWy66O/9yHBVQdRBTotUsqJHmc98x+V0J4IWjzcZBV9GraQpQxA+1id6zVmQZMBePjpdCmBjhL+wKTpU0/Lq4Z7gWNir8ePNRlfF51x68/3x3a,iv:W7kcjcKvzhNE5SNh9qN7X9xcdIUvqiaTzvmVEtkbL2s=,tag:IFPt1sg+tt8Y0it0jbRZtA==,type:str]
 sops:
     age:
         - enc: |
@@ -29,6 +29,6 @@ sops:
             -----END AGE ENCRYPTED FILE-----
           recipient: age14qc54c5gy5j3yf86mvtpupm7yl2ljxy6pgfpy70x5x3m4x4thczs97qm0u
     encrypted_regex: ^(data|stringData)$
-    lastmodified: "2026-11-05T14:41:06Z"
-    mac: ENC[AES256_GCM,data:5TxO/EAtJcptMBWp9b4uwU4wpDyFVYi0pdg5bl+5rxpjBmzMChcR/rZ5LaLijH4plwMFvRzD0bBU4bhaEU4sG9nNME6wEWaDr9UGcCnH7KbToCl7HWCpJn7ojFsIFMWnHTD6zZe6si9AiKdlbDyFWt3pD7+xpX/TC4VPOSgKgsc=,iv:4hJzs8Asu7IecWeweSMUfyvi77hNtBHGbqB6C1q0/5U=,tag:9DcJGuP4T7OwvK0CgoyRQg==,type:str]
+    lastmodified: "2026-11-07T00:19:44Z"
+    mac: ENC[AES256_GCM,data:TfIRcWxqAs1vb6fcRNZuTpDjR+YYXvOgxoGvVp8qCt5HpLRlPoVwi/yvO93exXsy0hOFOSr6hw5KShLcqbDNxezxwL1Hh9w68M0fpbgwr/TNUCEKbsDFnRXxF9sRowdMKSX8zj+kYuPbhjbrwdSJJbWc7Rd/3xLcZQV2rjvS7rs=,iv:kmses8cxuvzFatx/P/EY1sqKHHxBHV1c9J8n8lneoj4=,tag:omMN4l5a3joE3Wrv54HwdQ==,type:str]
     version: 3.13.3
