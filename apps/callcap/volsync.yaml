@@ -19,7 +19,7 @@ spec:
       daily: 7
       weekly: 4
       monthly: 3
-    moverSecurityContext
+    moverSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
       fsGroup: 1000
