@@ -11,6 +11,7 @@ spec:
     repository: volsync-callcap
     copyMethod: Snapshot
     storageClassName: mayastor-2
+    cacheStorageClassName: zfs-local
     volumeSnapshotClassName: mayastor
     cacheCapacity: 512Gi
     pruneIntervalDays: 7
@@ -37,6 +38,7 @@ spec:
     capacity: 1Gi
     accessModes: ["ReadWriteOnce"]
     storageClassName: mayastor-2
+    cacheStorageClassName: zfs-local
     volumeSnapshotClassName: mayastor
     cacheCapacity: 512Mi
     moverSecurityContext:
