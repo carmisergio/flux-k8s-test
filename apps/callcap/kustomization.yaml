@@ -18,6 +18,8 @@ resources:
   - callcap-api.sops.yaml
   - callcap-upload.sops.yaml
   - secret-ghcr-login.sops.yaml
+  - volsync-secret.sops.yaml
+  - volsync.yaml
 configMapGenerator:
   - name: callcap-controller
     files:

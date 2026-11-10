@@ -1,0 +1,45 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: callcap
+spec:
+  sourcePVC: callcap-profiles
+  trigger:
+    schedule: "0 * * * *"
+  restic:
+    repository: volsync-callcap
+    copyMethod: Snapshot
+    storageClassName: mayastor-2
+    volumeSnapshotClassName: mayastor
+    cacheCapacity: 512Gi
+    pruneIntervalDays: 7
+    retain:
+      hourly: 24
+      daily: 7
+      weekly: 4
+      monthly: 3
+    moverSecurityContext
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: callcap
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    repository: volsync-callcap
+    copyMethod: Snapshot
+    capacity: 1Gi
+    accessModes: ["ReadWriteOnce"]
+    storageClassName: mayastor-2
+    volumeSnapshotClassName: mayastor
+    cacheCapacity: 512Mi
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
