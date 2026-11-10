@@ -21,9 +21,9 @@ spec:
       weekly: 4
       monthly: 3
     moverSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: 65532
+      runAsGroup: 65532
+      fsGroup: 65532
 ---
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
@@ -42,6 +42,6 @@ spec:
     volumeSnapshotClassName: mayastor
     cacheCapacity: 512Mi
     moverSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: 65532
+      runAsGroup: 65532
+      fsGroup: 65532

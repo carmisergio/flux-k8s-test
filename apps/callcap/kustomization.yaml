@@ -42,12 +42,35 @@ patches:
           spec:
             imagePullSecrets:
               - name: ghcr-login
+  # Pinned here so a new upstream tag can't change who owns the profiles:
+  # must match moverSecurityContext in volsync.yaml.
+  - patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: callcap-controller
+        namespace: callcap
+      spec:
+        template:
+          spec:
+            securityContext:
+              runAsUser: 65532
+              runAsGroup: 65532
+              fsGroup: 65532
   # Replicated, so the controller isn't tied to one node's disk.
   - target: { kind: PersistentVolumeClaim, name: callcap-profiles }
     patch: |
       - op: add
         path: /spec/storageClassName
         value: mayastor-2
+      # Populated from the latest VolSync restore (volsync.yaml) when the
+      # PVC is created, so a recreated namespace comes back with its data.
+      - op: add
+        path: /spec/dataSourceRef
+        value:
+          apiGroup: volsync.backube
+          kind: ReplicationDestination
+          name: callcap
   # A fixed LAN address from Cilium's `static` pool, announced over BGP.
   - target: { kind: Service, name: callcap-controller }
     patch: |
