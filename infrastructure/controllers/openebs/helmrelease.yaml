@@ -54,6 +54,7 @@ spec:
         # No usage reports to OpenEBS.
         callhome:
           enabled: false
+      eventing: false
     loki:
       enabled: false
     alloy:
