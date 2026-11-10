@@ -13,7 +13,7 @@ spec:
     storageClassName: mayastor-2
     cacheStorageClassName: zfs-local
     volumeSnapshotClassName: mayastor
-    cacheCapacity: 512Gi
+    cacheCapacity: 512Mi
     pruneIntervalDays: 7
     retain:
       hourly: 24
