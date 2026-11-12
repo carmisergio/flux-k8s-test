@@ -6,7 +6,7 @@ metadata:
     cert-manager.io/cluster-issuer: swarm-labs-intermediate-ca
 spec:
   gatewayClassName: cilium
-  # Copied onto the generated cilium-gateway-main LoadBalancer Service:
+  # Copied onto the generated cilium-gateway-internal LoadBalancer Service:
   # a fixed IP from the "static" LB-IPAM pool.
   infrastructure:
     labels:

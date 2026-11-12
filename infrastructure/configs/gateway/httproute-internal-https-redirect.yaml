@@ -5,7 +5,7 @@ metadata:
   name: local-https-redirect
 spec:
   parentRefs:
-    - name: local
+    - name: internal
       sectionName: http
   rules:
     - filters:

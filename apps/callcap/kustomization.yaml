@@ -3,7 +3,7 @@
 # namespace, rbac, controller, networkpolicy and recorder-egress.yaml are
 # copied unchanged from the callcap repo at v0.1.0 (deploy/k8s, and
 # deploy/k8s/optional for recorder-egress). What's specific to this cluster
-# is in this file and controller.toml, so upgrading is: copy those files
+# is in this file, controller.toml and httproute.yaml, so upgrading is: copy those files
 # again from the new tag, then bump the tag here and recorder_image in
 # controller.toml.
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -20,6 +20,7 @@ resources:
   - secret-ghcr-login.sops.yaml
   - volsync-secret.sops.yaml
   - volsync.yaml
+  - httproute.yaml
 configMapGenerator:
   - name: callcap-controller
     files:
@@ -71,17 +72,3 @@ patches:
           apiGroup: volsync.backube
           kind: ReplicationDestination
           name: callcap
-  # A fixed LAN address from Cilium's `static` pool, announced over BGP.
-  - target: { kind: Service, name: callcap-controller }
-    patch: |
-      - op: add
-        path: /spec/type
-        value: LoadBalancer
-      - op: add
-        path: /metadata/labels
-        value:
-          lb.home/static: "true"
-      - op: add
-        path: /metadata/annotations
-        value:
-          lbipam.cilium.io/ips: 192.168.201.10

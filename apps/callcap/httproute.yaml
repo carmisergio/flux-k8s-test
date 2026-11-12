@@ -1,0 +1,18 @@
+# The web UI over HTTPS on the shared Gateway (infrastructure/configs/gateway),
+# with the cluster's wildcard certificate.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: callcap-controller
+  namespace: callcap
+spec:
+  parentRefs:
+    - name: internal
+      namespace: gateway-system
+      sectionName: https
+  hostnames:
+    - callcap.k8s-test.swarm-labs.internal
+  rules:
+    - backendRefs:
+        - name: callcap-controller
+          port: 80
