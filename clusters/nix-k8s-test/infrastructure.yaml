@@ -24,6 +24,9 @@ metadata:
   name: infra-configs
   namespace: flux-system
 spec:
+  # Configs use CRDs from the controllers (cert-manager's ClusterIssuer)
+  dependsOn:
+    - name: infra-controllers
   interval: 10m
   retryInterval: 1m
   path: ./infrastructure/configs

@@ -19,6 +19,12 @@ spec:
   values:
     crds:
       enabled: true
+    # Issue certificates for Gateway listeners (cert-manager.io/cluster-issuer
+    # annotation). The Gateway API CRDs come from nix-k8s-test (cilium.nix).
+    config:
+      apiVersion: controller.config.cert-manager.io/v1alpha1
+      kind: ControllerConfiguration
+      enableGatewayAPI: true
     podDnsPolicy: "None"
     podDnsConfig:
       nameservers:

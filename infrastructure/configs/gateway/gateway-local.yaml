@@ -1,0 +1,34 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: internal
+  annotations:
+    cert-manager.io/cluster-issuer: swarm-labs-intermediate-ca
+spec:
+  gatewayClassName: cilium
+  # Copied onto the generated cilium-gateway-main LoadBalancer Service:
+  # a fixed IP from the "static" LB-IPAM pool.
+  infrastructure:
+    labels:
+      lb.home/static: "true"
+    annotations:
+      lbipam.cilium.io/ips: 192.168.201.2
+  listeners:
+    # Only for the HTTPS redirect in this namespace
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "*.k8s-test.swarm-labs.internal"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: wildcard-k8s-test-tls
+      allowedRoutes:
+        namespaces:
+          from: All

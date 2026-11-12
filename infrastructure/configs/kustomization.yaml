@@ -4,3 +4,4 @@ resources:
   - cilium
   - openebs
   - cert-manager
+  - gateway
