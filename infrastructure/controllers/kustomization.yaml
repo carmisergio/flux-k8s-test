@@ -4,3 +4,4 @@ resources:
   - openebs
   - volsync
   - cert-manager
+  - netbird
